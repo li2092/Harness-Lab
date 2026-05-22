@@ -65,7 +65,7 @@ The workbench is at version v0, in the form of a concept and a specification. It
 
 The workbench takes on the engineering side. The corresponding methodology lives in an independent project.
 
-- Tutorial project: [harness-study](https://github.com/li2092/harness-study) — *The Engineering Practice for AI Agents*; a platform-agnostic methodology.
+- Tutorial project: [harness-study](https://github.com/li2092/harness-study) — *The Engineering Practice for AI Agents*.
 - Workbench project (this repository): the specification of a workbench built on that methodology.
 
 The division of labour is: the tutorial defines the object of study and the method; the workbench carries that method on executable instances. The readers of the tutorial include both human readers and the agent that will, on behalf of a non-technical user, deploy a harness in their stead. The users of the workbench include both engineers who tune a harness by hand and the automated tuning processes that take the workbench schema as their output format.
