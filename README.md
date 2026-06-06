@@ -1,3 +1,5 @@
+![Harness · Lab — an agent workbench: the model is one part among eight constituents (Task, Agent, Profile, Policy, Tool Call, Artifact, Verifier, Claim), ablated A/B with switchable mechanisms](docs/figures/hero-lab.png)
+
 # Harness · Lab
 
 An engineering workbench for agent harness.
@@ -11,6 +13,8 @@ An engineering workbench for agent harness.
 The object of study is not a single language model, nor any particular agent application. It is the **agent harness**: a working system that brings together several otherwise independent parts — the model, its tools, the context it accumulates, the artifacts it produces, the verifiers that check those artifacts, and the policies that constrain its behaviour — under an explicit task objective, through declared strategies and feedback.
 
 In current engineering practice, the model is often treated as a synonym for the whole agent. The model is in fact only one part of the system. The capability of the model does not directly imply the reliability of the agent, just as the output of an engine does not directly imply the reliability of a car. Calling this surrounding layer the **harness** is a way to make this neglected engineering object explicit, and to take it as the subject of systematic study.
+
+![The harness anatomy — eight constituents: Task, Agent, Profile, Policy, Tool Call, Artifact, Verifier, Claim; the model is mounted inside Profile, one part among eight](docs/figures/lab-1-anatomy.png)
 
 ## 2. The Problem
 
@@ -31,6 +35,8 @@ The result observed in practice: under the same base model and the same baseline
 
 This set of mechanisms is the early form that this workbench seeks to generalise: each mechanism addresses a distinct failure mode, can be independently switched off, independently measured, and independently compared with a baseline. The empirical run further suggests that isolating the layer around the model as an engineering object in its own right is a viable direction — not merely a proposition on paper.
 
+![One empirical run: GLM-5 on the Sierra Research τ³-airline set; assembling harness mechanisms around the same base model raised the pass rate by roughly ten percentage points, with no change to model weights and no reasoning toggle](docs/figures/lab-3-empirical.png)
+
 ## 4. Design Principles
 
 In its early phase, this workbench does not optimise the language model's weights. What it does optimise is the layer around the model — the **harness policy**: model routing and escalation, tool-call conventions, context accumulation, artifact persistence, verification rules, safety controls. In practice this policy tends to appear as scattered switches, thresholds, prompt fragments, and ad-hoc scripts, without a unified representation and without a systematic way to evaluate or adjust them.
@@ -43,6 +49,8 @@ The task of the workbench is not to describe a particular agent that already exi
 4. **Closed-loop feedback** — the artifacts produced by each experiment must be admissible as input to the next, so that adjustments are not isolated events but evidence-bound iterations.
 
 If any one of these four is absent, the workbench cannot serve as the basis for treating the harness as an engineering object. Among them, observability is prior: without complete trajectories and decision evidence, there is no object to control, no measure of stability, and no evidence on which to close the loop.
+
+![Four properties the workbench must hold in their control-theoretic sense: observability (prior), controllability, stability, closed-loop feedback](docs/figures/lab-2-principles.png)
 
 ## 5. Current Form
 
@@ -78,6 +86,8 @@ The workbench is developed in four steps; each step depends on the stability of 
 - **M2 — Data contract.** The data schemas of mechanism, configuration, task, suite, trajectory, and artifact are defined. Every execution shall be recorded in this schema, so that distinct implementations may be compared against one another.
 - **M3 — Reference implementation.** A minimal runnable reference is connected to an existing agent execution environment, to verify that the specification is realisable.
 - **M4 — Cross-implementation comparison.** The same specification is reused across distinct agent frameworks, so that the workbench is not bound to any one implementation.
+
+![Near-term roadmap — four dependent steps: M1 specification documented (active, v0), M2 data contract, M3 reference implementation, M4 cross-implementation comparison](docs/figures/lab-4-roadmap.png)
 
 ## 8. Boundaries — What Is Not Done
 
